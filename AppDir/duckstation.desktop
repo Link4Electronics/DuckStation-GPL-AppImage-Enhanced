@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=DuckStation
+GenericName=PlayStation Emulator
+Comment=PlayStation emulator
+Icon=duckstation
+Exec=duckstation-qt %f
+StartupWMClass=duckstation-qt
+Terminal=false
+StartupNotify=true
+Categories=Game;Emulator;Qt;
