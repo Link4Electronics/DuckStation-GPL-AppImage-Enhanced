@@ -6,21 +6,23 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-# pacman -Syu --noconfirm PACKAGESHERE
+pacman -Syu --noconfirm \
+    kvantum       \
+    lxqt-qtplugin \
+    qt6ct
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
-#make-aur-package PACKAGENAME
+make-aur-package scc
+PRE_BUILD_CMDS="sed -i 's/-DLLVM_BUILD_TESTS=ON/-DLLVM_BUILD_TESTS=OFF/; /check() {/,/}/ s/^/#/' ./PKGBUILD" make-aur-package llvm19
+make-aur-package lld19
+make-aur-package compiler-rt19
+PRE_BUILD_CMDS="sed -i 's/-DLLVM_BUILD_TESTS=ON/-DLLVM_BUILD_TESTS=OFF/; /check() {/,/}/ s/^/#/' ./PKGBUILD" make-aur-package clang19
+make-aur-package duckstation
 
 # If the application needs to be manually built that has to be done down here
-
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+mkdir -p ./AppDir/bin
+mv -v /opt/duckstation/* ./AppDir/bin
