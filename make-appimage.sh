@@ -9,7 +9,7 @@ export OUTPATH=./dist
 export ADD_HOOKS="self-updater.bg.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export DEPLOY_QT=1
-export DEPOY_VULKAN=1
+export DEPLOY_VULKAN=1
 
 # Deploy dependencies
 quick-sharun ./AppDir/bin/* #./AppDir/bin/duckstation-qt
