@@ -16,6 +16,11 @@ echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
+if [ "$ARCH" = "aarch64" ]; then
+    make-aur-package clang19
+    make-aur-package lld19
+    make-aur-package llvm19
+fi
 make-aur-package duckstation
 
 # If the application needs to be manually built that has to be done down here
