@@ -13,7 +13,7 @@ export QT_DIR=qt6
 export DEPLOY_VULKAN=1
 
 # Deploy dependencies
-quick-sharun ./AppDir/bin/* #./AppDir/bin/duckstation-qt
+quick-sharun ./AppDir/bin/*
 
 # Additional changes can be done in between here
 
